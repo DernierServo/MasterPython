@@ -8,21 +8,22 @@ def show_list(ls):
 
 
 def ds_fun_p4(ls):
-    num_finded = int(input('Please, insert a number: '))
-    is_finded = num_finded in ls
-    if is_finded:
-        return 'Finded!'
-    else:
-        return 'Not Found!'
+    
+    while True:
+        num_found = int(input('Please, insert a number: '))
+        if num_found in ls:
+            return f'The Number \'{num_found}\' was found, with position {ls.index(num_found)}!'
+        else:
+            print('Not Found!')
 
 
 def ds_fun():
     # Parte 1
-    ls = [randint(1,100) for x in range(8)]
+    ls = [randint(1,100) for x in range(10)]
     show_list(ls)
 
     # Parte 2
-    show_list(sorted(ls)) 
+    show_list(sorted(ls))  
 
     # Parte 3
     print(f'Longitud: {len(ls)}')
