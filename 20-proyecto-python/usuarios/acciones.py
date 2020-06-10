@@ -19,8 +19,20 @@ class Acciones:
             print('\n', '- '*30, '\nERROR! No te has registrado correctamente!')
 
     def login(self):
-        print('Identíficate por favor', '\n','- '*30)
-        email = input('Introduce tu email: ')
-        password = input('Introduce tu contraseña: ')
+        print('\n','- '*30, '\nLOGIN:', '\n')
+        try:
+            email = input('\t1. Email: ')
+            password = input('\t2. Contraseña: ')
 
-    
+            usuario = modelo.Usuario('', '', email, password)
+            login = usuario.identificar()
+
+            if email == login[3]:
+                print('\n', '- '*30, f'\nBienvenido {login[1]}, te has registrado el {login[5]}')
+                #self.proximas_acciones(login)
+        except Exception as e:
+            #print(type(e))
+            #print(type(e).__name__)
+            print(f'ERROR: Login incorrecto, inténtalo después de la pandemia xP')
+
+    #def proximas_acciones(self, usuario):

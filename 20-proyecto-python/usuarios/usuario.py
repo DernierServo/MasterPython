@@ -1,17 +1,10 @@
-import mysql.connector
 import datetime
 import hashlib
+import usuarios.conexion as conexion
 
-database = mysql.connector.connect(
-    host = 'localhost',
-    user = 'root',
-    passwd = 'Admin.123',
-    database = 'master_python',
-    port = 3306
-)
-
-# Sirve para hacer las consultas (queries)
-cursor = database.cursor(buffered=True)
+conex = conexion.conectar()
+database = conex[0]
+cursor = conex[1]
 
 class Usuario:
 
@@ -46,4 +39,15 @@ class Usuario:
 
 
     def identificar(self):
-        return self.nombre
+        sql = 'SELECT * FROM usuarios WHERE email = %s AND password = %s'
+
+        # Cifrar contraseña:
+        password_cifrado = hashlib.sha256()
+        password_cifrado.update(self.password.encode('utf8'))   # encode para volver BytesStream
+
+        usuario = (self.email, password_cifrado.hexdigest())
+
+        cursor.execute(sql, usuario)    #(query, valoresTupla)
+        response = cursor.fetchone()
+
+        return response
