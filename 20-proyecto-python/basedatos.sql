@@ -16,7 +16,8 @@ CREATE TABLE notas(
     id              INT(25) auto_increment NOT NULL,
     usuario_id      INT(25) NOT NULL,
     titulo          VARCHAR(255) NOT NULL,
-    descripcion     DATE NOT NULL,
+    descripcion     VARCHAR(255) NOT NULL,
+    fecha           DATE NOT NULL,
     CONSTRAINT pk_notas PRIMARY KEY(id),
     CONSTRAINT fk_nota_usuario FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 ) ENGINE=InnoDb;
