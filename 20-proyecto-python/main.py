@@ -8,20 +8,24 @@ Proyecto Python y Mysql:
 """
 from usuarios import acciones
 
-print("""
-Acciones disponibles:
-    - [R]egistro
-    - [L]ogin
-""")
-
-accion = acciones.Acciones()
-tipo_accion = input('¿Qué desea hacer?: ')
-
-if tipo_accion.upper() == 'R':
-    accion.registro()
-    
-elif tipo_accion.upper() == 'L':
-    accion.login() 
-    
 
 
+def main():
+    print("""
+    Acciones disponibles:
+        - [R]egistro
+        - [L]ogin
+        - [S]alir
+    """)    
+    accion = acciones.Acciones()
+    tipo_accion = input('¿Qué desea hacer?: ')
+
+    if tipo_accion.upper() == 'R':
+        accion.registro()    
+    elif tipo_accion.upper() == 'L':
+        accion.login() 
+    elif tipo_accion.upper() == 'S':
+        exit()
+
+if __name__ == '__main__':
+    main()

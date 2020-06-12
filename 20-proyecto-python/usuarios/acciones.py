@@ -1,6 +1,7 @@
 import usuarios.usuario as modelo
 import notas.acciones 
-
+#import main
+from main import main
 
 class Acciones:
 
@@ -17,6 +18,7 @@ class Acciones:
 
         if registro[0] >= 1:
             print('\n', '- '*30, f'\nEN HORA BUENA! \n\t{registro[1].nombre} te has registrado con el email {registro[1].email}')
+            main()
         else:
             print('\n', '- '*30, '\nERROR! No te has registrado correctamente!')
 
@@ -32,7 +34,7 @@ class Acciones:
 
             if email == usuario_logeado[3]:
                 print('\n', '- '*30, f'\nBienvenido {usuario_logeado[1]}, te has registrado el {usuario_logeado[5]}')
-                print("**************\n", usuario_logeado)
+                #print("**************\n", usuario_logeado)
                 self.proximas_acciones(usuario_logeado)
         except Exception as e:
             print(type(e))
@@ -61,6 +63,7 @@ class Acciones:
             self.proximas_acciones(usuario)
         if accion.upper() == 'E':
             print('ELIMINAR')
+            nota_accion.eliminar(usuario)
             self.proximas_acciones(usuario)
 
         if accion.upper() == 'S':

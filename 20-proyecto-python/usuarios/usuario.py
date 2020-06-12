@@ -1,6 +1,7 @@
 import datetime
 import hashlib
-import usuarios.conexion as conexion
+#import usuarios.conexion as conexion
+import conexion
 
 conex = conexion.conectar()
 database = conex[0]
@@ -27,7 +28,7 @@ class Usuario:
             self.email, 
             password_cifrado.hexdigest(), 
             fecha
-        )    
+        )
         try:
             cursor.execute(sql, usuario)
             database.commit()   #Guarda los datos en la BD
@@ -35,7 +36,6 @@ class Usuario:
         except:
             response = [0, self]
         return response
-
 
 
     def identificar(self):

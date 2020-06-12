@@ -16,6 +16,7 @@ class Acciones:
         else:
             print(f'\nNo se ha guardado la nota! Lo lamentamos {usuario[1]}')
 
+
     def mostrar(self, usuario):
         print(f'\nOK {usuario[1]}! Aquí la lista de Notas:')
 
@@ -23,5 +24,30 @@ class Acciones:
         notas = nota_usuario.listar()
 
         for nota in notas:
-            print(nota)
-        
+            print('*'*61, '\n')
+            print(f'Código: {nota[0]}')
+            #print(f'Autor: {usuario[1]} {usuario[2]}')
+            print(f'Título: {nota[2]}')
+            print(f'Contenido: \n\t{nota[3]}')
+            print('*'*61)
+
+
+    def eliminar(self, usuario):
+        print(f'\nEstimado {usuario[1]}, qué nota desea eliminar?:')
+
+        nota_usuario = modelo.Nota(usuario[0])
+        notas = nota_usuario.listar()
+
+        for nota in notas:
+            print('*'*61, '\n')
+            print(f'Código: {nota[0]}')
+            print(f'Título: {nota[2]}')
+
+        id_nota = int(input('\nId Nota: '))
+
+        nota_eliminada = nota_usuario.borrar(id_nota)
+
+        if nota_eliminada[0] >= 1:
+            print(f'\nEn hora buena! Has eliminado la nota: "{id_nota}"')
+        else:
+            print(f'\nNo se ha podido eliminar la nota :(')
