@@ -20,6 +20,9 @@ layout = """
         </li> 
         <li>
             <a href = '/otra-pagina'>Otra página</a>
+        </li>      
+        <li>
+            <a href = '/contacto'>Contacto</a>
         </li>       
     </ul>
     <hr/>
@@ -45,3 +48,11 @@ def otra_pagina(request):
     """)
     return response
 
+def contacto(request, nombre, apellido, edad):
+    """ Estos parámetros deben tener el mismo nombre y tipo que el que se especifica
+        en el urls.py
+    """
+    html = HttpResponse(layout + f"""
+        <h2>Contacto: {nombre} {apellido} de {edad} años.</h2>
+    """)
+    return html

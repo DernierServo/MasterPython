@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', miApp.views.index, name="index"),
     path('hola-mundo/', miApp.views.hola_mundo, name="hola_mundo"),
-    path('otra-pagina/', miApp.views.otra_pagina, name="otra_pagina")
+    path('otra-pagina/', miApp.views.otra_pagina, name="otra_pagina"),
+    path('contacto/<str:nombre>/<str:apellido>/<int:edad>', miApp.views.contacto, name="contacto")
 ]
