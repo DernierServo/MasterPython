@@ -1,3 +1,6 @@
+# render: Devuelve la template que queremos cargar desde la View, pero debe buscarla
+#         dentro de mi App (para lo cual debo agregarla en el 'settings.py' en INSTALLED_APPS)
+
 # request: Es un parámetro que permite recibir datos de peticiones a la URL donde se use. 
 #          Se debe de pasar a todos los métodos de la vista.
 
@@ -31,28 +34,17 @@ layout = """
 """
 
 def index(request):
-    return HttpResponse(layout + """
-        <h1>Inicio</h1>
-        <h2>Esta es la página principal</h2>
-        <h3>Desarrollado por: DServo-Labs &copy; 2020</h3>
-    """)
+    return render(request, 'index.html')
 
 def hola_mundo(request):
-    return HttpResponse(layout + """
-        <h1>Hola mundo con Django!!</h1>
-        <h2>Desarrollado por DServo-Labs &copy; 2020</h2>
-    """)
+    return render(request, 'hola_mundo.html')
 
 def otra_pagina(request, redirigir=0):
     if redirigir == 1:
         #return redirect("/")
         #return redirect('/contacto/dernier/servo/19')
         return redirect('n_contacto', nombre='Pedro', apellido='Picapiedra', edad=45)
-    return HttpResponse(layout + """
-        <h1>Otra página!</h1>
-        <h2>Esta es una página alternativa de la principal.</h2>
-    """)
-    return response
+    return render(request, 'otra_pagina.html')
 
 def contacto(request, nombre="", apellido="", edad=None):
     """ Estos parámetros deben tener el mismo nombre y tipo que el que se especifica
