@@ -1,2 +1,10 @@
-<h1>Otra página!</h1>
-<h2>Esta es una página alternativa de la principal.</h2>
+{% extends 'layout.html' %}
+
+{% block title %}
+    Otra página 
+{% endblock %}
+
+{% block content %}
+    <h1>Otra página!</h1>
+    <h2>Esta es una página alternativa de la principal.</h2>
+{% endblock %}

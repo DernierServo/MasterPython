@@ -13,25 +13,7 @@
 
 from django.shortcuts import render, HttpResponse, redirect
 
-layout = """
-    <h1>Sitio web con Django | Dernier Servo</h1>
-    <hr/>
-    <ul>
-        <li>
-            <a href = '/'>Inicio</a>
-        </li>
-        <li>
-            <a href = '/hola-mundo'>Hola mundo</a>
-        </li> 
-        <li>
-            <a href = '/otra-pagina'>Otra página</a>
-        </li>      
-        <li>
-            <a href = '/contacto2'>Contacto</a>
-        </li>       
-    </ul>
-    <hr/>
-"""
+layout = ""
 
 def index(request):
     return render(request, 'index.html')
