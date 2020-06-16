@@ -14,33 +14,47 @@
         <link rel='stylesheet' type='text/css' href="{% static 'css/styles.css' %}" /> 
     </head>
     <body>
-        <h1>Sitio web con Django | Dernier Servo</h1>
-        <hr/>
-        <ul>
-            <li>
-                <a href = '/'>Inicio</a>
-            </li>
-            <li>
-                <a href = '/hola-mundo'>Hola mundo</a>
-            </li> 
-            <li>
-                <a href = '/otra-pagina'>Otra página</a>
-            </li>      
-            <li>
-                <a href = '/contacto2'>Contacto</a>
-            </li>       
-        </ul>
-        <hr/>      
-        
+        <!--Cabecera de la página-->
+        <header>
+            <div id="logotipo">
+                <!--Logo Django-->
+                <img src="{% static 'images/logo.png' %}" />
+                <h1>Sitio web con Django</h1>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href = '/'>Inicio</a>
+                </li>
+                <li>
+                    <a href = '/hola-mundo'>Hola mundo</a>
+                </li> 
+                <li>
+                    <a href = '/otra-pagina'>Otra página</a>
+                </li>      
+                <li>
+                    <a href = '/contacto'>Contacto</a>
+                </li>       
+            </ul>
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+
         <div id="content">
-            {% block content %}
-                <!--Código que viene de templates-->
-                <strong>Contenido del bloque original!!></strong>
-            {% endblock %}
+            <div class="box">
+                {% block content %}
+                    <!--Código que viene de templates-->
+                    <strong>Contenido del bloque original!!></strong>
+                {% endblock %}
+            </div>
         </div>
 
         <footer>
-            <hr/>
             Master en python &copy; DServo-Labs WEB 2020
         </footer>
 

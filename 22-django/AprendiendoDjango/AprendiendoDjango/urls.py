@@ -29,5 +29,5 @@ urlpatterns = [
     path('contacto/', miApp.views.contacto, name="n_contacto"),
     path('contacto/<str:nombre>/', miApp.views.contacto, name="n_contacto"),
     path('contacto/<str:nombre>/<str:apellido>', miApp.views.contacto, name="n_contacto"),
-    path('contacto2/<str:nombre>/<str:apellido>/<int:edad>', miApp.views.contacto, name="n_contacto")
+    path('contacto/<str:nombre>/<str:apellido>/<int:edad>', miApp.views.contacto, name="n_contacto")
 ]
