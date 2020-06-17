@@ -1,11 +1,38 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Inicio 
+    {{title}} 
 {% endblock %}
 
 
 {% block content %}
-    <h1 class="title">Inicio</h1>
+    <h1 class="title">{{title}}</h1>
+    <p>{{mi_variable}}</p>
+    
+    {% if nombre  %}
+        <p>{{nombre}}</p>
+    {% else %}
+        <strong>El nombre no existe</strong>
+    {% endif %}
+
+    <h3>Listado de Lenguajes de Programación</h3>
+    <ul>
+    {% for lp in lps %}
+        <li> {{forloop.counter}} {{lp}} </li>
+    {% empty %}
+        <p><strong>No hay lenguajes que mostrar</strong></p>
+    {% endfor %}
+    </ul>
+
+    <p>Años hasta el 2050:</p>
+    <ul>
+        {% for anho in anhos %}
+            <!--'|divisibleby' es un filtro-->
+            {% if anho|divisibleby:2 == True %}
+                <li> {{anho}} </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
     <h2>Esta es la página principal</h2>
 {% endblock %}

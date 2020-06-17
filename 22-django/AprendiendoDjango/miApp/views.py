@@ -16,7 +16,24 @@ from django.shortcuts import render, HttpResponse, redirect
 layout = ""
 
 def index(request):
-    return render(request, 'index.html')
+    anho_ini = 2021
+    rango_anhos = range(anho_ini, 2051)
+
+    nombre = 'Dernier Servo'
+    lenguajes = ['Python', 'C', 'C++', 'Julia', 'Go', 'Javascript']
+    #lenguajes = []
+
+    return render(
+        request, 
+        'index.html',
+        {
+            'title': 'Inicio',
+            'nombre': nombre,
+            'lps': lenguajes,
+            'mi_variable': 'Soy un dato que está en la vista principal!',
+            'anhos': rango_anhos
+        }
+    )
 
 def hola_mundo(request):
     return render(request, 'hola_mundo.html')
