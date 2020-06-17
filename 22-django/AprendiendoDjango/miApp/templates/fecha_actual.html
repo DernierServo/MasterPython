@@ -1,0 +1,15 @@
+<br/>
+<hr/>
+<br/>
+<p>Años pares hasta el 2050:</p>
+<ul>
+    {% for anho in anhos %}
+        <!--'|divisibleby' es un filtro-->
+        {% if anho|divisibleby:2 == True %}
+            <li> {{anho}} </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<h2> {{saludo}}, bienvenido: {{nombre}} </h2>
+<h1> Estamos en el 2020, tiempo de cuarenta. </h1>

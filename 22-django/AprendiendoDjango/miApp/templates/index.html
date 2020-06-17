@@ -4,8 +4,8 @@
     {{title}} 
 {% endblock %}
 
-
 {% block content %}
+
     <h1 class="title">{{title}}</h1>
     <p>{{mi_variable}}</p>
     
@@ -24,15 +24,10 @@
     {% endfor %}
     </ul>
 
-    <p>Años hasta el 2050:</p>
-    <ul>
-        {% for anho in anhos %}
-            <!--'|divisibleby' es un filtro-->
-            {% if anho|divisibleby:2 == True %}
-                <li> {{anho}} </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <!-- Agregando otro Template al nuestro
+    incluyendo el paso de parámetro con 'with' 
+    se puede usar el atributo 'only' para que herede solo los parámetros del 'with':
+    {% include 'fecha_actual.html' with saludo="Hola mundo desde plantilla Index" only%}-->
+    {% include 'fecha_actual.html' with saludo="Hola mundo desde plantilla Index"%}
 
-    <h2>Esta es la página principal</h2>
 {% endblock %}
