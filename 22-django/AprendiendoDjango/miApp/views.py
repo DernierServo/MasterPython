@@ -43,7 +43,14 @@ def otra_pagina(request, redirigir=0):
         #return redirect("/")
         #return redirect('/contacto/dernier/servo/19')
         return redirect('n_contacto', nombre='Pedro', apellido='Picapiedra', edad=45)
-    return render(request, 'otra_pagina.html')
+    return render(
+        request, 
+        'otra_pagina.html',
+        {
+            'texto_pruebarueba': '',
+            'lista_prueba': ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete']
+        }
+    )
 
 def contacto(request, nombre="", apellido="", edad=None):
     """ Estos parámetros deben tener el mismo nombre y tipo que el que se especifica
