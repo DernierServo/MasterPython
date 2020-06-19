@@ -108,6 +108,8 @@ def editar_articulo(request, p_id):
 
 
 def listar_articulos(request):
+    #articulos = Article.objects.all()
+    articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
     #articulos = Article.objects.filter(public=True) #Filtra por Atributo
     #articulos = Article.objects.filter(public=True, id=3) #AND, varias condiciones
     #articulos = Article.objects.filter(title__contains='pelo') #"like"
