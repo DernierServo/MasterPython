@@ -86,6 +86,28 @@ def crear_articulo(request, title='', content='', public=''):
     return HttpResponse(f'<p>Artículo creado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
 
 
+def save_article(request):
+
+    articulo = Article(
+        title = title,
+        content = content,
+        public = public
+    )
+
+     # método save() es para guardarlo en la BD.
+    articulo.save()
+
+    return HttpResponse(f'<p>Artículo creado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
+
+
+def create_article(request):
+
+    return render(request, 'create_article.html')
+
+
+
+
+
 def mostrar_articulo(request, p_id):
     try:
         #articulo = Article.objects.get(id='7', public=True)
@@ -111,7 +133,7 @@ def editar_articulo(request, p_id):
 def listar_articulos(request):
     
     #ORM Django:
-    #articulos = Article.objects.all()
+    articulos = Article.objects.all()
     #articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
     #articulos = Article.objects.filter(public=True) #Filtra por Atributo
     #articulos = Article.objects.filter(public=True, id=3) #AND, varias condiciones
@@ -125,10 +147,10 @@ def listar_articulos(request):
     #articulos = Article.objects.all()
     #articulos = Article.objects.order_by('title') #Ordenar por Título Creciente
     #articulos = Article.objects.order_by('-title') #Ordenar por Título decreciente
-    #OR
-    articulos = Article.objects.filter(
-        Q(title__contains='pelo') | Q(title__contains='moha')
-    )
+    #Operador 'OR':
+    #articulos = Article.objects.filter(
+    #    Q(title__contains='pelo') | Q(title__contains='moha')
+    #)
 
     
     #SQL Puro:

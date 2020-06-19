@@ -17,23 +17,25 @@ from django.contrib import admin
 from django.urls import path
 
 # Importar app con mis vistas
-#from miApp import views
-import miApp.views
+from miApp import views
+#import miApp.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', miApp.views.index, name="n_index"),
-    path('inicio/', miApp.views.index, name="n_inicio"),
-    path('hola-mundo/', miApp.views.hola_mundo, name="n_hola_mundo"),
-    path('otra-pagina/', miApp.views.otra_pagina, name="n_otra_pagina"),
-    path('otra-pagina/<int:redirigir>', miApp.views.otra_pagina, name="n_otra_pagina"),    
-    path('contacto/', miApp.views.contacto, name="n_contacto"),
-    path('contacto/<str:nombre>/', miApp.views.contacto, name="n_contacto"),
-    path('contacto/<str:nombre>/<str:apellido>/', miApp.views.contacto, name="n_contacto"),
-    path('contacto/<str:nombre>/<str:apellido>/<int:edad>/', miApp.views.contacto, name="n_contacto"),
-    path('crear-articulo/<str:title>/<str:content>/<str:public>/', miApp.views.crear_articulo, name='n_crear_articulo'),
-    path('mostrar-articulo/<int:p_id>/', miApp.views.mostrar_articulo, name='n_mostrar_articulo'),
-    path('editar-articulo/<int:p_id>/', miApp.views.editar_articulo, name='n_editar_articulo'),
-    path('articulos/', miApp.views.listar_articulos, name='n_articulos'),
-    path('borrar-articulo/<int:p_id>', miApp.views.borrar_articulo, name='n_borrar_articulo')
+    path('', views.index, name="n_index"),
+    path('inicio/', views.index, name="n_inicio"),
+    path('hola-mundo/', views.hola_mundo, name="n_hola_mundo"),
+    path('otra-pagina/', views.otra_pagina, name="n_otra_pagina"),
+    path('otra-pagina/<int:redirigir>', views.otra_pagina, name="n_otra_pagina"),    
+    path('contacto/', views.contacto, name="n_contacto"),
+    path('contacto/<str:nombre>/', views.contacto, name="n_contacto"),
+    path('contacto/<str:nombre>/<str:apellido>/', views.contacto, name="n_contacto"),
+    path('contacto/<str:nombre>/<str:apellido>/<int:edad>/', views.contacto, name="n_contacto"),
+    path('crear-articulo/<str:title>/<str:content>/<str:public>/', views.crear_articulo, name='n_crear_articulo'),
+    path('mostrar-articulo/<int:p_id>/', views.mostrar_articulo, name='n_mostrar_articulo'),
+    path('editar-articulo/<int:p_id>/', views.editar_articulo, name='n_editar_articulo'),
+    path('articulos/', views.listar_articulos, name='n_articulos'),
+    path('borrar-articulo/<int:p_id>/', views.borrar_articulo, name='n_borrar_articulo'),
+    path('save-article/', views.save_article, name='n_save_article'),
+    path('create-article/', views.create_article, name='n_create_article'),
 ]

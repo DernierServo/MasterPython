@@ -1,3 +1,8 @@
+<!--
+    Dos formas de enviar datos:
+    GET: Viajan por url
+    POST: Viajan por las cabeceras http
+-->
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -30,6 +35,10 @@
                 <li>
                     <!--<a href = '/'>Artículo</a>-->
                     <a href="{% url 'n_articulos' %}">Artículos</a>
+                </li>                
+                <li>
+                    <!--<a href = '/'>Artículo</a>-->
+                    <a href="{% url 'n_create_article' %}">Crear Artículo</a>
                 </li>                
                 <li>
                     <!--<a href = '/hola-mundo'>Hola mundo</a>-->
