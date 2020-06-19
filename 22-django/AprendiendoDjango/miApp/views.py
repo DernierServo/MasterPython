@@ -12,8 +12,10 @@
 ###########################################################################################
 
 from django.shortcuts import render, HttpResponse, redirect
+from miApp.models import Article
 
 layout = ""
+
 
 def index(request):
     anho_ini = 2021
@@ -35,8 +37,10 @@ def index(request):
         }
     )
 
+
 def hola_mundo(request):
     return render(request, 'hola_mundo.html')
+
 
 def otra_pagina(request, redirigir=0):
     if redirigir == 1:
@@ -52,6 +56,7 @@ def otra_pagina(request, redirigir=0):
         }
     )
 
+
 def contacto(request, nombre="", apellido="", edad=None):
     """ Estos parámetros deben tener el mismo nombre y tipo que el que se especifica
         en el urls.py
@@ -64,3 +69,39 @@ def contacto(request, nombre="", apellido="", edad=None):
     response = HttpResponse(layout + f"<h2>Contacto: </h2>" + html)
         
     return response
+
+
+def crear_articulo(request, title='', content='', public=''):
+
+    articulo = Article(
+        title = title,
+        content = content,
+        public = public
+    )
+
+     # método save() es para guardarlo en la BD.
+    articulo.save()
+
+    return HttpResponse(f'<p>Artículo creado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
+
+
+def mostrar_articulo(request, p_id):
+    try:
+        #articulo = Article.objects.get(id='7', public=True)
+        articulo = Article.objects.get(id=p_id)
+        response = f'Articulo: </br> {articulo.id} - {articulo.title}'
+    except:
+        response = '<h1>Artículo no encontrado</h1>'
+    return HttpResponse(response)
+
+
+def editar_articulo(request, p_id):
+
+    articulo = Article.objects.get(id=p_id)
+
+    articulo.title = 'Chapulín Colorado'
+    articulo.content = 'Más noble que una lechuga, Más fuerte que un ratón.'
+
+    articulo.save()
+
+    return HttpResponse(f'<p>Artículo Editado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
