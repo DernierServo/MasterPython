@@ -34,4 +34,5 @@ urlpatterns = [
     path('crear-articulo/<str:title>/<str:content>/<str:public>/', miApp.views.crear_articulo, name='n_crear_articulo'),
     path('mostrar-articulo/<int:p_id>/', miApp.views.mostrar_articulo, name='n_mostrar_articulo'),
     path('editar-articulo/<int:p_id>/', miApp.views.editar_articulo, name='n_editar_articulo'),
+    path('articulos/', miApp.views.listar_articulos)
 ]

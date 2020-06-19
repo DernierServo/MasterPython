@@ -105,3 +105,15 @@ def editar_articulo(request, p_id):
     articulo.save()
 
     return HttpResponse(f'<p>Artículo Editado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
+
+
+def listar_articulos(request):
+    articulos = Article.objects.all()
+
+    return render(
+        request, 
+        'articulos.html', 
+        {
+            'articulos': articulos
+        }
+    )
