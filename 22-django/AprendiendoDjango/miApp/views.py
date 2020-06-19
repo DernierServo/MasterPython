@@ -109,7 +109,7 @@ def editar_articulo(request, p_id):
 
 def listar_articulos(request):
     #articulos = Article.objects.all()
-    articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
+    #articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
     #articulos = Article.objects.filter(public=True) #Filtra por Atributo
     #articulos = Article.objects.filter(public=True, id=3) #AND, varias condiciones
     #articulos = Article.objects.filter(title__contains='pelo') #"like"
@@ -122,6 +122,15 @@ def listar_articulos(request):
     #articulos = Article.objects.all()
     #articulos = Article.objects.order_by('title') #Ordenar por Título Creciente
     #articulos = Article.objects.order_by('-title') #Ordenar por Título decreciente
+
+    #SQL Puro:
+    articulos = Article.objects.raw(
+        """
+        SELECT * 
+        FROM miApp_article
+        WHERE id>3 AND id<=7 AND public=True
+        """
+    )
 
     return render(
         request, 
