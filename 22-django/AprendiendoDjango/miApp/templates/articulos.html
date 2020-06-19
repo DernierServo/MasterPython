@@ -9,8 +9,19 @@
 
     <ul>
         {% for articulo in articulos %}
-            <li>{{ articulo.id }} {{ articulo.title }} - {{ articulo.content}}</li>
+            <li>
+                <h4> {{ articulo.id }}. {{ articulo.title }} </h4>
+                <p>
+                    {{ articulo.content}} 
+                    <br>
+                    <a href= "{% url 'n_borrar_articulo' p_id=articulo.id %}">Eliminar</a>
+                </p>
+                <hr/>
+                <br>
+                
+            </li>
         {% endfor %}
+    </ul>
 
 {% endblock %}
 

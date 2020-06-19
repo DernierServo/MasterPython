@@ -108,7 +108,12 @@ def editar_articulo(request, p_id):
 
 
 def listar_articulos(request):
-    articulos = Article.objects.all()
+    articulos = Article.objects.filter(public=True) #Filtra por Atributo
+    #articulos = Article.objects.all()  #Trae TODOS los elemntos
+    #articulos = Article.objects.order_by('id')[1:3] #Filtro por cantidad de elementos
+    #articulos = Article.objects.all()
+    #articulos = Article.objects.order_by('title') #Ordenar por Título Creciente
+    #articulos = Article.objects.order_by('-title') #Ordenar por Título decreciente
 
     return render(
         request, 
@@ -117,3 +122,13 @@ def listar_articulos(request):
             'articulos': articulos
         }
     )
+
+
+def borrar_articulo(request, p_id):
+    try:
+        articulo = Article.objects.get(id=p_id)
+        articulo.public = 0
+        articulo.save()
+        return redirect('n_articulos')
+    except:
+        return HttpResponse('<h1>Artículo no encontrado</h1>')
