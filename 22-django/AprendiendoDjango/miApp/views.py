@@ -13,6 +13,7 @@
 
 from django.shortcuts import render, HttpResponse, redirect
 from miApp.models import Article
+from django.db.models import Q
 
 layout = ""
 
@@ -108,6 +109,8 @@ def editar_articulo(request, p_id):
 
 
 def listar_articulos(request):
+    
+    #ORM Django:
     #articulos = Article.objects.all()
     #articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
     #articulos = Article.objects.filter(public=True) #Filtra por Atributo
@@ -122,15 +125,22 @@ def listar_articulos(request):
     #articulos = Article.objects.all()
     #articulos = Article.objects.order_by('title') #Ordenar por Título Creciente
     #articulos = Article.objects.order_by('-title') #Ordenar por Título decreciente
-
-    #SQL Puro:
-    articulos = Article.objects.raw(
-        """
-        SELECT * 
-        FROM miApp_article
-        WHERE id>3 AND id<=7 AND public=True
-        """
+    #OR
+    articulos = Article.objects.filter(
+        Q(title__contains='pelo') | Q(title__contains='moha')
     )
+
+    
+    #SQL Puro:
+    #articulos = Article.objects.raw(
+    #    """
+    #    SELECT * 
+    #    FROM miApp_article
+    #    WHERE id>3 AND id<=7 AND public=True
+    #    """
+    #)
+
+
 
     return render(
         request, 
