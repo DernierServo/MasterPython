@@ -88,24 +88,38 @@ def crear_articulo(request, title='', content='', public=''):
 
 def save_article(request):
 
-    articulo = Article(
-        title = title,
-        content = content,
-        public = public
-    )
+    if request.method == 'GET':
 
-     # método save() es para guardarlo en la BD.
-    articulo.save()
+        title = request.GET['title']
+        if len(title) <= 5:
+            return HttpResponse("<h2>El Título es muy pequeño!</h2>")
 
-    return HttpResponse(f'<p>Artículo creado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
+        content = request.GET['content']
+        public = request.GET['public']
+
+        articulo = Article(
+            title = title,
+            content = content,
+            public = public
+        )
+
+        articulo.save()
+
+        return render(
+            request, 
+            'save_article.html',
+            {
+                'articulo': articulo
+            }
+        )
+
+    else:
+        return HttpResponse("<h2>No se ha podido genera el articulo!</h2>")
 
 
 def create_article(request):
 
     return render(request, 'create_article.html')
-
-
-
 
 
 def mostrar_articulo(request, p_id):
@@ -133,7 +147,7 @@ def editar_articulo(request, p_id):
 def listar_articulos(request):
     
     #ORM Django:
-    articulos = Article.objects.all()
+    articulos = Article.objects.order_by('-id').exclude(public=False)
     #articulos = Article.objects.filter(id__gt=3).exclude(public=False) #Excluye
     #articulos = Article.objects.filter(public=True) #Filtra por Atributo
     #articulos = Article.objects.filter(public=True, id=3) #AND, varias condiciones
@@ -151,7 +165,6 @@ def listar_articulos(request):
     #articulos = Article.objects.filter(
     #    Q(title__contains='pelo') | Q(title__contains='moha')
     #)
-
     
     #SQL Puro:
     #articulos = Article.objects.raw(
@@ -161,8 +174,6 @@ def listar_articulos(request):
     #    WHERE id>3 AND id<=7 AND public=True
     #    """
     #)
-
-
 
     return render(
         request, 
