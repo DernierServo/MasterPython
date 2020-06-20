@@ -88,14 +88,14 @@ def crear_articulo(request, title='', content='', public=''):
 
 def save_article(request):
 
-    if request.method == 'GET':
+    if request.method == 'POST':
 
-        title = request.GET['title']
+        title = request.POST['title']
         if len(title) <= 5:
             return HttpResponse("<h2>El Título es muy pequeño!</h2>")
 
-        content = request.GET['content']
-        public = request.GET['public']
+        content = request.POST['content']
+        public = request.POST['public']
 
         articulo = Article(
             title = title,
@@ -114,7 +114,7 @@ def save_article(request):
         )
 
     else:
-        return HttpResponse("<h2>No se ha podido genera el articulo!</h2>")
+        return HttpResponse("<h2>No se ha podido generar el articulo!</h2>")
 
 
 def create_article(request):
