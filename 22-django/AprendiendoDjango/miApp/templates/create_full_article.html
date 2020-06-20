@@ -1,0 +1,28 @@
+<!--
+    Dos formas de enviar datos:
+    GET: Viajan por url
+    POST: Viajan por las cabeceras http
+-->
+
+{% extends 'layout.html' %}
+
+{% block title %}
+    Formularios de Artículo
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Formularios de Artículo</h1>
+
+    <form action = {% url 'n_save_article' %} method = "POST">
+
+            {% csrf_token %}
+
+            <!--{{ form.as_p}}-->
+            <!--{{ form.as_ul}}-->
+            {{ form }}
+
+            <input type="submit" value="Guardar"/>
+    </form>
+
+{% endblock %}
+ 

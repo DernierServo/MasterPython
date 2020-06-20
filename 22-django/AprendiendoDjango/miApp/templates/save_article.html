@@ -1,0 +1,25 @@
+<!--
+    Dos formas de enviar datos:
+    GET: Viajan por url
+    POST: Viajan por las cabeceras http
+-->
+
+{% extends 'layout.html' %}
+
+{% block title %}
+    Artículo creado
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Artículo creado</h1>
+
+    <p>
+        <strong>Título: </strong>
+        {{articulo.title}}
+    </p> 
+    <p>
+        <strong>Contenido: </strong>
+        {{articulo.content}}
+    </p>    
+
+{% endblock %}

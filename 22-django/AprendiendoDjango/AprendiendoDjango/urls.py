@@ -38,4 +38,5 @@ urlpatterns = [
     path('borrar-articulo/<int:p_id>/', views.borrar_articulo, name='n_borrar_articulo'),
     path('save-article/', views.save_article, name='n_save_article'),
     path('create-article/', views.create_article, name='n_create_article'),
+    path('create-full-article/', views.create_full_article, name='n_create_full_article'),
 ]
