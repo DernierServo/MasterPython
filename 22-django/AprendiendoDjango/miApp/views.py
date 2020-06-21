@@ -105,7 +105,8 @@ def save_article(request):
         )
 
         articulo.save()
-
+        
+        #return HttpResponse(f'<p>Artículo creado: </p><p><strong>Título: </strong>{articulo.title}</p> <p><strong>Contenido: </strong>{articulo.content }</p>')
         return render(
             request, 
             'save_article.html',
@@ -124,7 +125,20 @@ def create_article(request):
 
 def create_full_article(request):
     
-    formulario = Form_Article()
+    if request.method == 'POST':
+        formulario = Form_Article(request.POST)
+
+        if formulario.is_valid():
+            data_form = formulario.cleaned_data
+
+            title = data_form.get('title')
+            content = data_form['content']
+            public = data_form['public']
+
+            return redirect('n_articulos')
+            #return HttpResponse(title + ' ' + content + ' ' + str(public))
+    else:
+        formulario = Form_Article()
 
     return render(
         request, 

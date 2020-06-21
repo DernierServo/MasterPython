@@ -13,15 +13,22 @@
 {% block content %}
     <h1 class="title">Formularios de Artículo</h1>
 
-    <form action = {% url 'n_save_article' %} method = "POST">
+    {% if form.errors %}
+        <strong class="rojo">
+            Hay errores en el Formulario
+        </strong>
+    {% endif %}
 
-            {% csrf_token %}
+    <!--<form action = "{% url 'n_save_article' %}" method = "POST">-->
+    <form action = "" method = "POST">
 
-            <!--{{ form.as_p}}-->
-            <!--{{ form.as_ul}}-->
-            {{ form }}
+        {% csrf_token %}
 
-            <input type="submit" value="Guardar"/>
+        <!--{{ form}}-->
+        <!--{{ form.as_ul}}-->
+        {{ form.as_p }}
+
+        <input type="submit" value="Guardar"/>
     </form>
 
 {% endblock %}
