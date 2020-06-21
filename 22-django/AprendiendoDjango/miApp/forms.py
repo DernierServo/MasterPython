@@ -31,7 +31,7 @@ class Form_Article(forms.Form):
             }            
         ),
         validators = [
-            validators.MaxLengthValidator(20, 'Te has pasado con mucho texto!')
+            validators.MaxLengthValidator(50, 'Te has pasado con mucho texto!')
         ]
     )
 

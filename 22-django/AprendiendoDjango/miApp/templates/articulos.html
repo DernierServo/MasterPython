@@ -7,6 +7,14 @@
 {% block content %}
     <h1 class="title">Listado de artículos</h1>
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor%}
+    {% endif %}
+
     <ul>
         {% for articulo in articulos %}
             <li>

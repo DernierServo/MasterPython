@@ -15,6 +15,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from miApp.models import Article
 from django.db.models import Q
 from miApp.forms import Form_Article
+from django.contrib import messages # Librería para mensajes Flash
 
 layout = ""
 
@@ -134,6 +135,17 @@ def create_full_article(request):
             title = data_form.get('title')
             content = data_form['content']
             public = data_form['public']
+
+            articulo = Article(
+                title = title,
+                content = content,
+                public = public
+            )
+
+            articulo.save()
+
+            # Crear mensaje flash (sesión que solo se muestra una vez)
+            messages.success(request, f'Artículo {articulo.title} generado correctamente!')            
 
             return redirect('n_articulos')
             #return HttpResponse(title + ' ' + content + ' ' + str(public))
