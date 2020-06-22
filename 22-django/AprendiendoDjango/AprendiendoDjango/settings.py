@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Dservo apps:
-    'miApp',
+    #'miApp',
+    'miApp.apps.MiappConfig'
 ]
 
 MIDDLEWARE = [
