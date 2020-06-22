@@ -6,8 +6,8 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Título')
     content = models.TextField(verbose_name='Contenido')
     public = models.BooleanField(verbose_name='Publicado')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Editado')
 
     class Meta:
         verbose_name = "Articulo"
@@ -16,6 +16,12 @@ class Article(models.Model):
         #ordering = ['title']
         ordering = ['id']
 
+    def __str__(self):
+        if self.public:
+            publicado = '(publicado)'
+        else:
+            publicado = '(privado)'
+        return f'{self.title} - {publicado}'
 
 
 class Category(models.Model):
