@@ -5,6 +5,7 @@ from django.db import models
 class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Título')
     content = models.TextField(verbose_name='Contenido')
+    image = models.ImageField(default='null', verbose_name="Miniatura")
     public = models.BooleanField(verbose_name='Publicado')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Editado')
