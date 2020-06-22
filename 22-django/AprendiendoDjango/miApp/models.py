@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Article(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
-    public = models.BooleanField()
+    title = models.CharField(max_length=100, verbose_name='Título')
+    content = models.TextField(verbose_name='Contenido')
+    public = models.BooleanField(verbose_name='Publicado')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -14,7 +14,7 @@ class Article(models.Model):
         verbose_name_plural = "Artículos"
         #ordering = ['-id', 'created_at']
         #ordering = ['title']
-        ordering = [id]
+        ordering = ['id']
 
 
 
