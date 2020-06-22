@@ -5,7 +5,7 @@ from django.db import models
 class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Título')
     content = models.TextField(verbose_name='Contenido')
-    image = models.ImageField(default='null', verbose_name="Miniatura")
+    image = models.ImageField(default='null', verbose_name="Miniatura", upload_to='articles')
     public = models.BooleanField(verbose_name='Publicado')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Editado')
@@ -15,7 +15,7 @@ class Article(models.Model):
         verbose_name_plural = "Artículos"
         #ordering = ['-id', 'created_at']
         #ordering = ['title']
-        ordering = ['id']
+        ordering = ['-id']
 
     def __str__(self):
         if self.public:
