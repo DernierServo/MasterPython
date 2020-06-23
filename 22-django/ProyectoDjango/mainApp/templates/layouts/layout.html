@@ -1,0 +1,61 @@
+<!--
+    Dos formas de enviar datos:
+    GET: Viajan por url
+    POST: Viajan por las cabeceras http
+-->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset='utf-8' />
+        <title>
+            {% block title %}
+
+            {% endblock %}
+            | DServo labs
+        </title>
+        {% load static %}    
+        <link rel='stylesheet' type='text/css' href="{% static 'css/styles.css' %}" /> 
+    </head>
+    <body>
+        <!--Cabecera de la página-->
+        <header>
+            <div id="logotipo">
+                <!--Logo Django-->
+                <img src="{% static 'images/logo.png' %}" />
+                <h1>Proyecto <strong>Django</strong></h1>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <!--<a href = '/'>Inicio</a>-->
+                    <strong><a href="{% url 'n_index' %}">Inicio</a></strong>
+                </li>
+                <li>
+                    <!--<a href = '/'>Artículo</a>-->
+                    <strong><a href="{% url 'n_sobre_nosotros' %}">Sobre Nosotros</a></strong>
+                </li>      
+            </ul>
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+
+        <div id="content">
+            <div class="box">
+                {% block content %}
+                    <!--Código que viene de templates-->
+                    <strong>Contenido del bloque original!!></strong>
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            Master en python &copy; DServo-Labs WEB - {% now "d/m/Y" %}
+        </footer>
+
+    </body>
+</html>
