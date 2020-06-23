@@ -42,13 +42,6 @@ urlpatterns = [
     path('create-full-article/', views.create_full_article, name='n_create_full_article'),
 ]
 
-# Configurar el título del panel
-title = "Máster en Python - DServo Labs."
-admin.site.site_header = title
-admin.site.site_title = title
-admin.site.index_title = "Panel de gestión"
-
-
 # Configuración para cargar imágenes
 if settings.DEBUG:
     from django.conf.urls.static import static

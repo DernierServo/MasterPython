@@ -9,3 +9,9 @@ class ArticleAdmin(admin.ModelAdmin):
 # Ds: Para generar un CRUD de cada modelo en el /admin de Django.
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category)
+
+# Configurar el título del panel
+title = "Máster en Python - DServo Labs."
+admin.site.site_header = title
+admin.site.site_title = title
+admin.site.index_title = "Panel de gestión"
