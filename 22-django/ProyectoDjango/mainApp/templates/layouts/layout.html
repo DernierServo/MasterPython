@@ -32,10 +32,13 @@
                     <!--<a href = '/'>Inicio</a>-->
                     <strong><a href="{% url 'n_index' %}">Inicio</a></strong>
                 </li>
-                <li>
-                    <!--<a href = '/'>Artículo</a>-->
-                    <strong><a href="{% url 'n_sobre_nosotros' %}">Sobre Nosotros</a></strong>
-                </li>      
+                {% for page in pages %}
+                    <li>
+                        <!--<a href = '/'>Artículo</a>-->
+                        <!--<strong><a href="{% url 'n_sobre_nosotros' %}">Sobre Nosotros</a></strong>-->
+                        <a href="#">{{ page.1 }} </a>
+                    </li>  
+                {% endfor %}    
             </ul>
         </nav>
         <div class="barra">
