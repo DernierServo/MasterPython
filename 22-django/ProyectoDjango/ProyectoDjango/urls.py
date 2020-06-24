@@ -23,6 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='n_index'),
     path('inicio/', views.index, name='n_inicio'),
-    path('pagina/', pages.views.page, name='n_page')
-
+    path('pagina/<str:slug>/', pages.views.page, name='n_page'),
 ]

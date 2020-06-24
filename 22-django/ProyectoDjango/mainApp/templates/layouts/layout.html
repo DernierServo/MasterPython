@@ -34,8 +34,7 @@
                 </li>
                 {% for page in pages %}
                     <li>
-                        <!--<a href = '/'>Artículo</a>-->
-                        <a href="#">{{ page.1 }} </a>
+                        <a href="{% url 'n_page' page.2 %}">{{ page.1 }} </a>
                     </li>  
                 {% endfor %}    
             </ul>
