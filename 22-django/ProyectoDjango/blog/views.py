@@ -14,3 +14,15 @@ def list(request):
             'articles': articles
         }
     )
+
+
+def category(request, p_category_id):
+    category = Category.objects.get(id=p_category_id)
+
+    return render(
+        request,
+        'categories/category.html',
+        {
+            'category': category
+        }
+    )

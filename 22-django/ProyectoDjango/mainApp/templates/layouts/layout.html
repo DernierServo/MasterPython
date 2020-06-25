@@ -38,7 +38,7 @@
                     <ul>
                         {% for category in categories %}
                             <li>
-                                <a href="{% url 'n_index' %}"><strong>{{category.1}}</strong></a>
+                                <a href="{% url 'n_category' category.0 %}"><strong>{{ category.1 }}</strong></a>
                             </li>  
                         {% endfor %}
                     </ul>
