@@ -1,10 +1,12 @@
-from blog.models import Category
+from blog.models import Category, Article
 
 def get_categories(request):
 
-    # Similar a: SELECT id, title, slug FROM Page
-    categories = Category.objects.values_list('id', 'name')
+    categories_in_use = Article.objects.filter(public=True).values_list('categories', flat=True)
+    # Similar a: SELECT id, name FROM Category
+    categories = Category.objects.filter(id__in=categories_in_use).values_list('id', 'name')
 
     return {
-        'categories': categories
+        'categories': categories,
+        'ids': categories_in_use
     }
