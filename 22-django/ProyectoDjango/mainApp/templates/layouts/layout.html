@@ -36,15 +36,11 @@
                     <!--<a href = '/'>Inicio</a>-->
                     <a href="{% url 'n_articulos' %}"><strong>Categorías</strong></a>
                     <ul>
-                        <li>
-                            <a href="{% url 'n_index' %}"><strong>Categoría 1</strong></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'n_index' %}"><strong>Categoría 2</strong></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'n_index' %}"><strong>Categoría 3</strong></a>
-                        </li>                                                
+                        {% for category in categories %}
+                            <li>
+                                <a href="{% url 'n_index' %}"><strong>{{category.1}}</strong></a>
+                            </li>  
+                        {% endfor %}
                     </ul>
                 </li>                
                 {% for page in pages %}
