@@ -30,11 +30,26 @@
             <ul>
                 <li>
                     <!--<a href = '/'>Inicio</a>-->
-                    <strong><a href="{% url 'n_index' %}">Inicio</a></strong>
+                    <a href="{% url 'n_index' %}"><strong>Inicio</strong></a>
                 </li>
+                <li>
+                    <!--<a href = '/'>Inicio</a>-->
+                    <a href="{% url 'n_articulos' %}"><strong>Categorías</strong></a>
+                    <ul>
+                        <li>
+                            <a href="{% url 'n_index' %}"><strong>Categoría 1</strong></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'n_index' %}"><strong>Categoría 2</strong></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'n_index' %}"><strong>Categoría 3</strong></a>
+                        </li>                                                
+                    </ul>
+                </li>                
                 {% for page in pages %}
                     <li>
-                        <a href="{% url 'n_page' page.2 %}">{{ page.1 }} </a>
+                        <a href="{% url 'n_page'  page.2 %}"><strong>{{ page.1 }}</strong></a>
                     </li>  
                 {% endfor %}    
             </ul>

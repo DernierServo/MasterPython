@@ -124,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Ckeditor
 # Google: toolbar button ckeditor
 #   https://ckeditor.com/latest/samples/old/toolbar/toolbar.html
