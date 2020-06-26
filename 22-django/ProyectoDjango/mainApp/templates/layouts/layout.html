@@ -47,7 +47,12 @@
                     <li>
                         <a href="{% url 'n_page'  page.2 %}"><strong>{{ page.1 }}</strong></a>
                     </li>  
-                {% endfor %}    
+                {% endfor %}
+
+                <li>
+                    <!--<a href = '/'>Inicio</a>-->
+                    <a href="{% url 'n_registro' %}"><strong>Registro</strong></a>
+                </li>
             </ul>
         </nav>
         <div class="barra">
