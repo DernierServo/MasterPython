@@ -182,6 +182,15 @@ nav > ul > li:hover > ul > li:hover a{
     margin: 0 auto;
 }
 
+.box a {
+    color: #444;
+    transition: all 300ms;    
+}
+
+.box a:hover {
+    color: #2ba977;
+}
+
 .box form {
     width: 30%;
 }

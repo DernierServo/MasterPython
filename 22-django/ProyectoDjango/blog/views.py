@@ -28,3 +28,16 @@ def category(request, p_category_id):
             'articles': articles
         }
     )
+
+
+def article(request, p_article_id):
+
+    article = get_object_or_404(Article, id=p_article_id)
+
+    return render(
+        request,
+        'articles/detail.html',
+        {
+            'article': article
+        }
+    )

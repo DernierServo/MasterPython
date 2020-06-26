@@ -1,5 +1,6 @@
 {% for article in articles %}
     <article class="article-item">
+    
         {% if article.image != 'null' and article.image.url|length >= 1 %}
             <div class="image">
                 <img src="{{article.image.url}}"/>
@@ -9,7 +10,11 @@
         {% endif %}
 
         <div class="data">
-            <h2> {{ article.title }} </h2>
+            <h2> 
+                <a href="{% url 'article' article.id %}">
+                    {{ article.title }} 
+                </a>
+            </h2>
             <p>
                 {% for category in article.categories.all %}
                     <a href="{% url 'n_category' category.id %}">{{ category.name }}</a>
