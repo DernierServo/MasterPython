@@ -18,11 +18,13 @@ def list(request):
 
 def category(request, p_category_id):
     category = get_object_or_404(Category, id=p_category_id)
+    articles = Article.objects.filter(categories=p_category_id)
 
     return render(
         request,
         'categories/category.html',
         {
-            'category': category
+            'category': category,
+            'articles': articles
         }
     )
