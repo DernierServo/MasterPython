@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 
@@ -31,7 +32,8 @@ def register_page(request):
 
         if register_form.is_valid():
             register_form.save()
-            
+            messages.success(request, 'Te has registrado con éxito!')
+
             return redirect('n_inicio')
 
     return render(

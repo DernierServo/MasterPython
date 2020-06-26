@@ -213,6 +213,8 @@ nav > ul > li:hover > ul > li:hover a{
 }
 
 .box form input[type="text"],
+.box form input[type="email"],
+.box form input[type="password"],
 .box form textarea {
     width: 100%;
     margin-bottom: 10px;
@@ -238,7 +240,8 @@ nav > ul > li:hover > ul > li:hover a{
     color: red;
 }
 
-.message { 
+.message,
+.alert-success { 
     padding: 10px;
     background: #82fd96;
     color: rgb(42, 107, 42);
