@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
+
 
 def index(request):
     return render(
@@ -26,47 +26,59 @@ def about(request):
 
 def register_page(request):
 
-    register_form = RegisterForm()
+    if request.user.is_authenticated:
+        return redirect('n_inicio')
+    else:
+        register_form = RegisterForm()
 
-    if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
+        if request.method == 'POST':
+            register_form = RegisterForm(request.POST)
 
-        if register_form.is_valid():
-            register_form.save()
-            messages.success(request, 'Te has registrado con éxito!')
+            if register_form.is_valid():
+                register_form.save()
+                messages.success(request, 'Te has registrado con éxito!')
 
-            return redirect('n_inicio')
+                return redirect('n_inicio')
 
-    return render(
-        request, 
-        'users/register.html',
-        {
-            'title': 'Registro',
-            'register_form': register_form
-        }
+        return render(
+            request, 
+            'users/register.html',
+            {
+                'title': 'Registro',
+                'register_form': register_form
+            }
 
-    )
+        )
 
 
 def login_page(request):
 
-    # Valida que la información esté llegando desde el Formulario: Método POST
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('n_inicio')
+    else:
+        # Valida que la información esté llegando desde el Formulario: Método POST
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+            user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('n_inicio')
-        else:
-            messages.warning(request, 'No te has podido identificarsh!')
+            if user is not None:
+                login(request, user)
+                return redirect('n_inicio')
+            else:
+                messages.warning(request, 'No te has podido identificarsh!')
 
-    return render(
-        request, 
-        'users/login.html',
-        {
-            'title': 'Identifícate'
-        }
-    )
+        return render(
+            request, 
+            'users/login.html',
+            {
+                'title': 'Identifícate'
+            }
+        )
+
+
+def logout_user(request):
+
+    logout(request)
+    return redirect('n_login')

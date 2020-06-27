@@ -51,6 +51,10 @@
                             <a href="{% url 'n_page'  page.2 %}"><strong>{{ page.1 }}</strong></a>
                         </li>  
                     {% endfor %}
+                    <li>
+                        <a href="{% url 'n_logout' %}"><strong>Logout</strong></a>
+                    </li>
+
 
                 {% else %}
 
