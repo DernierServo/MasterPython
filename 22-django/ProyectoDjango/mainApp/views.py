@@ -23,6 +23,7 @@ def about(request):
         }
     )
 
+
 def register_page(request):
 
     register_form = RegisterForm()
@@ -44,4 +45,15 @@ def register_page(request):
             'register_form': register_form
         }
 
+    )
+
+
+def login_page(request):
+
+    return render(
+        request, 
+        'users/login.html',
+        {
+            'title': 'Identifícate'
+        }
     )

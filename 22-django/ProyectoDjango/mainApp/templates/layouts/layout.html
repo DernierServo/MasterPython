@@ -32,6 +32,7 @@
                     <!--<a href = '/'>Inicio</a>-->
                     <a href="{% url 'n_index' %}"><strong>Inicio</strong></a>
                 </li>
+
                 <li>
                     <!--<a href = '/'>Inicio</a>-->
                     <a href="{% url 'n_articulos' %}"><strong>Categorías</strong></a>
@@ -50,9 +51,12 @@
                 {% endfor %}
 
                 <li>
-                    <!--<a href = '/'>Inicio</a>-->
                     <a href="{% url 'n_registro' %}"><strong>Registro</strong></a>
                 </li>
+                <li>
+                    <a href="{% url 'n_login' %}"><strong>Login</strong></a>
+                </li>
+
             </ul>
         </nav>
         <div class="barra">
