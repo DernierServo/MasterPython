@@ -26,6 +26,7 @@
             </div>
         </header>
 
+
         <nav>
             <ul>
                 <li>
@@ -33,32 +34,40 @@
                     <a href="{% url 'n_index' %}"><strong>Inicio</strong></a>
                 </li>
 
-                <li>
-                    <!--<a href = '/'>Inicio</a>-->
-                    <a href="{% url 'n_articulos' %}"><strong>Categorías</strong></a>
-                    <ul>
-                        {% for category in categories %}
-                            <li>
-                                <a href="{% url 'n_category' category.0 %}"><strong>{{ category.1 }}</strong></a>
-                            </li>  
-                        {% endfor %}
-                    </ul>
-                </li>                
-                {% for page in pages %}
+                {% if user.email %}
                     <li>
-                        <a href="{% url 'n_page'  page.2 %}"><strong>{{ page.1 }}</strong></a>
-                    </li>  
-                {% endfor %}
+                        <!--<a href = '/'>Inicio</a>-->
+                        <a href="{% url 'n_articulos' %}"><strong>Categorías</strong></a>
+                        <ul>
+                            {% for category in categories %}
+                                <li>
+                                    <a href="{% url 'n_category' category.0 %}"><strong>{{ category.1 }}</strong></a>
+                                </li>  
+                            {% endfor %}
+                        </ul>
+                    </li> 
+                    {% for page in pages %}
+                        <li>
+                            <a href="{% url 'n_page'  page.2 %}"><strong>{{ page.1 }}</strong></a>
+                        </li>  
+                    {% endfor %}
 
-                <li>
-                    <a href="{% url 'n_registro' %}"><strong>Registro</strong></a>
-                </li>
-                <li>
-                    <a href="{% url 'n_login' %}"><strong>Login</strong></a>
-                </li>
+                {% else %}
+
+                    <li>
+                        <a href="{% url 'n_registro' %}"><strong>Registro</strong></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'n_login' %}"><strong>Login</strong></a>
+                    </li>
+
+                {% endif %}
 
             </ul>
         </nav>
+
+
+
         <div class="barra">
             <span class="esquina-izquierda"></span>
             <span class="relleno-barra"></span>
